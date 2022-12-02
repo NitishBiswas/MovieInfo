@@ -7,7 +7,7 @@ const Header = () => {
     const navigate = useNavigate();
     return (
         <div className='header'>
-            <div className="logo" onClick={() => navigate('/')}>Movie App</div>
+            <div className="logo" onClick={() => navigate('/')}>Movie Info</div>
             <div className="user-image">
                 <img src={USER} alt="" />
             </div>
