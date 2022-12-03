@@ -1,6 +1,6 @@
 @import '../../common/colors.scss';
 
-.movie-list {
+.movie-list, .show-list {
     margin: 20px 0px;
     h2{
         color: $secondary-font;
@@ -9,8 +9,19 @@
     }
 }
 
-.movie-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-gap: 15px;
+.movies-error, .shows-error{
+    display: flex;
+
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    h3{
+        color: $primary-font;
+    }
 }
+
+// .movie-container {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+//     grid-gap: 15px;
+// }

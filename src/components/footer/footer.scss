@@ -8,4 +8,20 @@
     align-items: center;
     color: $primary-font;
     flex-direction: column;
+
+    .logo {
+        color: $primary-font;
+        font-size: 24px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.5s;
+
+        &:hover {
+            transform: scale(1.02);
+        }
+
+        span {
+            color: #0d6efd;
+        }
+    }
 }

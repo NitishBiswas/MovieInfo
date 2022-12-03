@@ -17,4 +17,13 @@ body {
 
 .container {
     margin: 0px 40px;
+    min-height: 80vh;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

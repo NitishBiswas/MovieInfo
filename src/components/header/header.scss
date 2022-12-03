@@ -9,16 +9,46 @@
     justify-content: space-between;
     .logo {
         color: $primary-font;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 600;
         cursor: pointer;
         transition: 0.5s;
         &:hover{
             transform: scale(1.02);
         }
+        span{
+            color: #0d6efd;
+        }
     }
     .user-image, .user-image img {
         width: 38px;
         height: 38px;
+    }
+}
+
+.search-bar {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    form {
+        display: flex;
+        justify-content: center;
+        width: 70%;
+
+        button {
+            padding: 0px 8px;
+            font-size: 20px;
+            cursor: pointer;
+            height: 38px;
+        }
+    }
+
+    input {
+        font-size: 18px;
+        width: 100%;
+        padding: 5px 5px 5px 10px;
+        height: 38px;
+        outline: none;
     }
 }

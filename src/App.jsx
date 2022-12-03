@@ -6,6 +6,8 @@ import Home from './components/home/Home'
 import MovieDetail from './components/movie-detail/MovieDetail'
 import PageNotFound from './components/page-not-found/PageNotFound'
 import './App.scss'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
@@ -19,6 +21,7 @@ const App = () => {
         </Routes>
       </div>
       <Footer />
+      <ToastContainer />
     </>
   )
 }
