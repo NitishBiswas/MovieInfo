@@ -5,6 +5,7 @@ import MovieCard from '../movie-card/MovieCard';
 import Slider from "react-slick";
 import './movie-listing.scss'
 import { Settings } from '../../common/slider-settings';
+import PageNotFound from '../page-not-found/PageNotFound';
 
 const MovieListing = () => {
     const movies = useSelector(getAllMovies);
@@ -12,48 +13,42 @@ const MovieListing = () => {
 
     let renderMovies, renderShows = "";
 
-    renderMovies = movies.Response === "True" ? (
+    renderMovies = movies.Response === "True" && (
         movies.Search.map((movie, index) => {
             return (
                 <MovieCard key={index} data={movie} />
             )
         })
-    ) : (
-        <div className="movies-error">
-            <h3>{movies.Error}</h3>
-        </div>
     );
 
-    renderShows = shows.Response === "True" ? (
+    renderShows = shows.Response === "True" && (
         shows.Search.map((show, index) => {
             return (
                 <MovieCard key={index} data={show} />
             )
         })
-    ) : (
-        <div className="movies-error">
-            <h3>{shows.Error}</h3>
-        </div>
     );
 
     return (
         <div className="movie-wrapper">
-            <div className="movie-list">
-                <h2>Movies</h2>
-                <div className="movie-container">
-                    <Slider {...Settings}>
-                        {renderMovies}
-                    </Slider>
+            {movies.Response === 'True' ? <>
+                <div className="movie-list">
+                    <h2>Movies</h2>
+                    <div className="movie-container">
+                        <Slider {...Settings}>
+                            {renderMovies}
+                        </Slider>
+                    </div>
                 </div>
-            </div>
-            <div className="show-list">
-                <h2>Shows</h2>
-                <div className="movie-container">
-                    <Slider {...Settings}>
-                        {renderShows}
-                    </Slider>
+                <div className="show-list">
+                    <h2>Shows</h2>
+                    <div className="movie-container">
+                        <Slider {...Settings}>
+                            {renderShows}
+                        </Slider>
+                    </div>
                 </div>
-            </div>
+            </> : <PageNotFound movieNotFound='Yes' />}
         </div>
     )
 }
