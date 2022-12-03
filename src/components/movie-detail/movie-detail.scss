@@ -1,5 +1,9 @@
 @import "../../common/colors.scss";
 
+.detail{
+    display: flex;
+}
+
 .movie-section {
     display: flex;
     justify-content: space-evenly;
@@ -59,4 +63,21 @@
 
 .section-right {
     margin-left: 30px;
+}
+
+@media screen and (max-width: 1080px) {
+    .detail{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .section-right {
+        margin: 0px;
+        margin-top: 10px;
+
+    }
+    .movie-section {
+        padding: 10px 0px;
+    }
+    
 }

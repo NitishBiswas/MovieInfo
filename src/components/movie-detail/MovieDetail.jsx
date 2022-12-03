@@ -30,7 +30,7 @@ const MovieDetail = () => {
                     />
                 </div>
             ) : (
-                <>
+                <div className='detail'>
                     <div className="section-left">
                         <div className="movie-title">{detail.Title}</div>
                         <div className="movie-rating">
@@ -75,7 +75,7 @@ const MovieDetail = () => {
                     <div className="section-right">
                         <img src={detail.Poster} alt={detail.Title} />
                     </div>
-                </>
+                </div>
             )}
         </div>
     )
