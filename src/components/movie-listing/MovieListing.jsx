@@ -5,12 +5,10 @@ import MovieCard from '../movie-card/MovieCard';
 import Slider from "react-slick";
 import './movie-listing.scss'
 import { Settings } from '../../common/slider-settings';
-import { useNavigate } from 'react-router-dom';
 
 const MovieListing = () => {
     const movies = useSelector(getAllMovies);
     const shows = useSelector(getAllShows);
-    const navigate = useNavigate();
 
     let renderMovies, renderShows = "";
 
@@ -20,7 +18,11 @@ const MovieListing = () => {
                 <MovieCard key={index} data={movie} />
             )
         })
-    ) : navigate('/page-not-found', { state: movies.Error });
+    ) : (
+        <div className="movies-error">
+            <h3>{movies.Error}</h3>
+        </div>
+    );
 
     renderShows = shows.Response === "True" ? (
         shows.Search.map((show, index) => {
@@ -28,7 +30,11 @@ const MovieListing = () => {
                 <MovieCard key={index} data={show} />
             )
         })
-    ) : navigate('/page-not-found', { state: shows.Error });
+    ) : (
+        <div className="movies-error">
+            <h3>{shows.Error}</h3>
+        </div>
+    );
 
     return (
         <div className="movie-wrapper">

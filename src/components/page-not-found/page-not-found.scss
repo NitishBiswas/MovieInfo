@@ -2,6 +2,20 @@
 
 .not-found{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    button{
+        padding: 10px;
+        border: 1px solid rgb(224, 224, 224);
+        background-color: transparent;
+        color: $secondary-font;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0px 0px 7px 0px #5e5e5e;
+        &:hover {
+            background-color: #0d6efd;
+            color: $primary-font;
+        }
+    }
 }

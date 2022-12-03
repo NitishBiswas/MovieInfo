@@ -19,7 +19,6 @@ const Home = () => {
 
     return (
         <>
-            <div className='banner-image'></div>
             <MovieListing />
         </>
     )

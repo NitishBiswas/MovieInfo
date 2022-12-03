@@ -11,7 +11,7 @@ export const fetchAsyncMovies = createAsyncThunk(
 )
 
 export const fetchAsyncShows = createAsyncThunk(
-    'shows/fetchAsyncShows',
+    'movies/fetchAsyncShows',
     async (searchText) => {
         const shows = await movieAPI.get(`?apikey=${APIKey}&s=${searchText}&type=series`);
         return shows.data;
@@ -19,7 +19,7 @@ export const fetchAsyncShows = createAsyncThunk(
 )
 
 export const fetchAsyncMovieOrShowsDetail = createAsyncThunk(
-    'movie-show/fetchAsyncMovieOrShowsDetail',
+    'movies/fetchAsyncMovieOrShowsDetail',
     async (id) => {
         const detail = await movieAPI.get(`?apikey=${APIKey}&i=${id}&Plot=full`);
         return detail.data;
@@ -40,42 +40,49 @@ const movieSlice = createSlice({
             state.selectedMovieOrShow = {};
         },
     },
-    extraReducers: {
+
+    extraReducers: (builder) => {
         // addMovies
-        [fetchAsyncMovies.pending]: () => {
+        builder.addCase(fetchAsyncMovies.pending, () => {
             console.log("Pending movies");
-        },
-        [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
+        })
+
+        builder.addCase(fetchAsyncMovies.fulfilled, (state, { payload }) => {
             console.log("Fetched movies successfully");
             return { ...state, movies: payload }
-        },
-        [fetchAsyncMovies.rejected]: () => {
-            console.log("Rejected movies");
-        },
+        })
 
-        // addShows
-        [fetchAsyncShows.pending]: () => {
+        builder.addCase(fetchAsyncMovies.rejected, () => {
+            console.log("Rejected movies");
+        })
+
+        //addShows
+        builder.addCase(fetchAsyncShows.pending, () => {
             console.log("Pending shows");
-        },
-        [fetchAsyncShows.fulfilled]: (state, { payload }) => {
+        })
+
+        builder.addCase(fetchAsyncShows.fulfilled, (state, { payload }) => {
             console.log("Fetched shows successfully");
             return { ...state, shows: payload }
-        },
-        [fetchAsyncShows.rejected]: () => {
+        })
+
+        builder.addCase(fetchAsyncShows.rejected, () => {
             console.log("Rejected shows");
-        },
+        })
 
         // addDetail
-        [fetchAsyncMovieOrShowsDetail.pending]: () => {
+        builder.addCase(fetchAsyncMovieOrShowsDetail.pending, () => {
             console.log("Pending detail");
-        },
-        [fetchAsyncMovieOrShowsDetail.fulfilled]: (state, { payload }) => {
+        })
+
+        builder.addCase(fetchAsyncMovieOrShowsDetail.fulfilled, (state, { payload }) => {
             console.log("Fetched detail successfully");
             return { ...state, selectedMovieOrShow: payload }
-        },
-        [fetchAsyncMovieOrShowsDetail.rejected]: () => {
+        })
+
+        builder.addCase(fetchAsyncMovieOrShowsDetail.rejected, () => {
             console.log("Rejected detail");
-        }
+        })
     }
 })
 

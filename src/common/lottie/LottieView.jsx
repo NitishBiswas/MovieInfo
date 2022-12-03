@@ -13,11 +13,13 @@ const LottieView = ({ file, height, width }) => {
     };
 
     return (
-        <Lottie options={defaultOptions}
-            height={height}
-            width={width}
-            style={{ marginBottom: '0px' }}
-        />
+        <>
+            <Lottie options={defaultOptions}
+                height={height}
+                width={width}
+                style={{ marginBottom: '0px' }}
+            />
+        </>
     )
 }
 

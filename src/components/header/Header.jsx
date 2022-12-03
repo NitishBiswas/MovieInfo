@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { fetchAsyncMovies, fetchAsyncShows } from '../../features/movies/movieSlice'
 import USER from '../../images/user.png'
@@ -9,7 +9,6 @@ import './header.scss'
 const Header = () => {
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState("");
-    const location = useLocation().pathname;
 
     const dispatch = useDispatch();
     const onSearchSubmit = (e) => {
@@ -29,15 +28,13 @@ const Header = () => {
         }
         dispatch(fetchAsyncMovies(searchText));
         dispatch(fetchAsyncShows(searchText));
-        if (location !== '/') {
-            navigate('/', { state: searchText });
-        }
+        navigate('/', { state: searchText });
         setSearchText("");
     };
 
     return (
         <div className='header'>
-            <div className="logo" onClick={() => navigate('/')}>Movie <span>Info</span></div>
+            <div className="logo" onClick={() => navigate('/', { state: searchText })}>Movie <span>Info</span></div>
             <div className="search-bar">
                 <form onSubmit={onSearchSubmit}>
                     <input
